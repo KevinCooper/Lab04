@@ -113,3 +113,30 @@ void SPI_send(char byteToSend)
     set_SS_hi();
 }
 
+
+/*
+ * Author: Kevin Cooper
+ */
+void initSPI(){
+	UCB0CLT1 |= UCSWRST|UCSSEL1; //select a clock to use!
+	UCB0CTL0 |= UCCKPL|UCMSB|UCMST|UCSYNC;
+	UCB0STAT |= UCLISTEN;  //enables internal loopback
+	P1SEL |= BIT5;  //make UCB0CLK available on P1.5
+	P1SEL2 |= BIT5;
+	P1DIR |= BIT0|BIT3;  //Set up P1.3 to be out SS output
+	P1SEL  |= BIT7;  //make UCB0SSIMO available on P1.7 ; = MOSI
+	P1SEL2 |= BIT7;
+	P1SEL  |= BIT6; //make UCB0SSOMI available on P1.6; = MISO
+	P1SEL2 |= BIT6;
+	UCB0CTL1 &= ~UCSWRST; //enable subsystem
+}
+
+
+
+
+
+
+
+
+
+
