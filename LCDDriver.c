@@ -7,12 +7,22 @@
 
 
 #define RS_MASK 0x40
+#include <msp430.h>
 
+void SPI_send(char byteToSend);
+void writeCommandByte(char commandByte);
+void writeDataByte(char dataByte);
+void writeCommandNibble(char commandNibble);
+void LCD_write_8(char byteToSend);
+
+char LCDCON;
 /*
  * Author: Todd Branchflower
  */
 void LCDinit()
 {
+	LCDCON &= 0x00; //Clear out the Connection bit to a know state
+
     writeCommandNibble(0x03);
 
     writeCommandNibble(0x03);

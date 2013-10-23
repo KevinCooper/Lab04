@@ -8,20 +8,15 @@
 #ifndef LCDDRIVER_H_
 #define LCDDRIVER_H_
 
+#define LCDCON 1
+
 void initSPI();
-
 void LCDinit();
-
 void LCDclear();
-
 void cursorToLineTwo();
-
 void cursorToLineOne();
-
 void writeChar(char asciiChar);
-
 void writeString(char * string);
-
 void scrollString(char * string1, char * string2);
 
 #endif /* LCDDRIVER_H_ */
