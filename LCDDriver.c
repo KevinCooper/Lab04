@@ -118,7 +118,7 @@ void SPI_send(char byteToSend)
  * Author: Kevin Cooper
  */
 void initSPI(){
-	UCB0CLT1 |= UCSWRST|UCSSEL1; //select a clock to use!
+	UCB0CTL1 |= UCSWRST|UCSSEL1; //select a clock to use!
 	UCB0CTL0 |= UCCKPL|UCMSB|UCMST|UCSYNC;
 	UCB0STAT |= UCLISTEN;  //enables internal loopback
 	P1SEL |= BIT5;  //make UCB0CLK available on P1.5
