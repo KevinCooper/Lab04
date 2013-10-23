@@ -14,7 +14,11 @@ void writeCommandByte(char commandByte);
 void writeDataByte(char dataByte);
 void writeCommandNibble(char commandNibble);
 void LCD_write_8(char byteToSend);
-
+void LCD_write_4(char nibbleToSend);
+void delayMilli();
+void delayMicro();
+void set_SS_lo();
+void set_SS_hi();
 char LCDCON;
 /*
  * Author: Todd Branchflower
@@ -92,6 +96,18 @@ void LCD_write_8(char byteToSend)
 
     LCD_write_4(sendByte);
 }
+
+void LCD_write_4(char nibbleToSend){
+
+}
+
+void delayMilli(){
+	__delay_cycles(222); //Delay 1.65 ms
+}
+
+void delayMicro(){
+	__delay_cycles(9);  //Delay 40.5 micro seconds
+}
 /*
  * Author: Todd Branchflower
  */
@@ -113,7 +129,13 @@ void SPI_send(char byteToSend)
     set_SS_hi();
 }
 
+void set_SS_lo(){
+	P1OUT |= BIT0|BIT3;
+}
 
+void set_SS_hi(){
+	P1OUT &= ~BIT0|BIT3;
+}
 /*
  * Author: Kevin Cooper
  */
