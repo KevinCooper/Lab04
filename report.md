@@ -23,6 +23,6 @@ Software delays in C on the MSP430 should be simple using the code provided by t
 None
 
 ##Grade
-| Item | Grade | Points | Out of | Date | Due |
-| :-: | :-: | :-: | :-: | :-: |
+| Item | Grade | Points | Out of | Date | Due |<br>
+| :-: | :-: | :-: | :-: | :-: |<br>
 |Prelab | **On-Time:** 0 ---- Check Minus ---- Check ---- Check Plus | | 5 | | BOC L9 |
