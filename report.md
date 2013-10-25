@@ -11,6 +11,9 @@ Software delays in C on the MSP430 should be simple using the code provided by t
 
 ### Software Flow Chart / Algorithms
 
+[LCDDriver](https://github.com/KevinCooper/LCDDriver/)<br>
+[clock](https://github.com/KevinCooper/clock/)
+
 ### Hardware Schematic
 
 N/A
