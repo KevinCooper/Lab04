@@ -1,4 +1,4 @@
-# Title
+# LAB04 Report
 
 ## Objective / Purpose<br>
 
@@ -16,7 +16,10 @@ Software delays in C on the MSP430 should be simple using the code provided by t
 
 ### Hardware Schematic
 
-N/A
+####Picture<br>
+![Picture of the MSP430](images/msp430.jpg)
+
+Schematic
 
 ## Implementation
 
