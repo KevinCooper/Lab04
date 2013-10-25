@@ -32,7 +32,3 @@ Everything in this project was relatively easy, except for the one bug mentioned
 ## Documentation<br>
 None
 
-##Grade
-| Item | Grade | Points | Out of | Date | Due |<br>
-| :-: | :-: | :-: | :-: | :-: |<br>
-|Prelab | **On-Time:** 0 ---- Check Minus ---- Check ---- Check Plus | | 5 | | BOC L9 |
