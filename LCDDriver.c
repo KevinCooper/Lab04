@@ -29,8 +29,7 @@ short unsigned int position;
  */
 void LCDinit()
 {
-	LCDCON &= 0x00; //Clear out the Connection bit to a know state
-
+	set_SS_hi();
 	writeCommandNibble(0x03);
 
 	writeCommandNibble(0x03);
@@ -96,7 +95,7 @@ void LCD_write_8(char byteToSend)
 	LCD_write_4(sendByte);
 }
 
-void LCD_write_4(char nibbleToSend)
+void LCD_write_4(unsigned char nibbleToSend)
 {
 	nibbleToSend &= 0x0F; //Clear upper half
 	nibbleToSend |= LCDCON; //Set LCD control
@@ -155,8 +154,9 @@ void set_SS_hi()
  */
 void initSPI()
 {
-	UCB0CTL1 |= UCSWRST | UCSSEL1; //select a clock to use!
+	UCB0CTL1 |= UCSWRST ; //select a clock to use!
 	UCB0CTL0 |= UCCKPL | UCMSB | UCMST | UCSYNC;
+	UCB0CTL1 |=  UCSSEL1;
 	UCB0STAT |= UCLISTEN;  //enables internal loopback
 	P1SEL |= BIT5;  //make UCB0CLK available on P1.5
 	P1SEL2 |= BIT5;
