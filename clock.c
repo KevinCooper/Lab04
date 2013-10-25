@@ -12,7 +12,7 @@
 #define SPEED_8MHZ 0x08
 #define SPEED_16MHZ 0x16
 
-void setfrequency(char speed)
+void setFrequency(char speed)
 {
 	DCOCTL = CLEAR_CLOCK;
 	switch (speed) {
