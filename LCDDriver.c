@@ -18,7 +18,12 @@ void delayMilli();
 void delayMicro();
 void set_SS_lo();
 void set_SS_hi();
+
+
 char LCDCON;
+
+short unsigned int position;
+
 /*
  * Author: Todd Branchflower
  */
@@ -48,6 +53,7 @@ void LCDinit()
 
 	SPI_send(0);
 	delayMicro();
+	position = 0;// Set up the position for the write bytes
 }
 /*
  * Author: Todd Branchflower
@@ -184,5 +190,14 @@ void LCDclear()
 	//Delay 1
 	LCDCON |= RS_MASK;  // Because Assembly.....
 	//Delay 2
+	position = 0;
 }
 
+void writeChar(char asciiChar){
+	if(position == 20)
+		cursorToLineTwo();
+	if(position != 40){
+		writeDataByte(asciiChar);
+		position ++;
+	}
+}
