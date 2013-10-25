@@ -15,7 +15,7 @@ void LCDinit();  //Done
 void LCDclear();  //Done
 void cursorToLineTwo();  //Done
 void cursorToLineOne();  //Done
-void writeChar(char asciiChar);
+void writeChar(char asciiChar); //Done
 void writeString(char * string);
 void scrollString(char * string1, char * string2);
 

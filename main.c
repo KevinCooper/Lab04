@@ -8,6 +8,6 @@ int main(void) {
     initSPI();
 	LCDinit();
 	LCDclear();
-	writeString("Message?12345678");
+	scrollString("This string is too long!", "WABABABABABABABABA");
 	while(1){}
 }

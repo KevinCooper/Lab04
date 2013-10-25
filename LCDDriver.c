@@ -4,9 +4,16 @@
  *  Created on: Oct 23, 2013
  *      Author: C15Kevin.Cooper
  */
+#include <msp430.h>
+
 
 #define RS_MASK 0x40
-#include <msp430.h>
+#define TRUE 1
+#define FALSE 0
+
+
+
+
 
 void SPI_send(char byteToSend);
 void writeCommandByte(char commandByte);
@@ -18,9 +25,9 @@ void delayMilli();
 void delayMicro();
 void set_SS_lo();
 void set_SS_hi();
+void delayHundred();
 
 char LCDCON = 0x00;
-
 short unsigned int position;
 
 /*
@@ -118,6 +125,11 @@ void delayMicro()
 {
 	__delay_cycles(45);  //Delay 40.5 micro seconds
 }
+
+void delayHundred()
+{
+	__delay_cycles(200000);  //Delay 200 milli seconds
+}
 /*
  * Author: Todd Branchflower
  */
@@ -192,8 +204,29 @@ void writeChar(char asciiChar)
 	}
 }
 
-void writeString(char * string){
+void writeString(char * string)
+{
 	int i;
-	for(i =0; i<strlen(string);i++)
+	for(i = 0; i < 16; i++)
 		writeChar(string[i]);
+}
+void scrollString(char * string1, char * string2)
+{
+	int i;
+	char* iterString1 = string1;
+	char* iterString2 = string2;
+	while (TRUE) {
+		LCDclear();
+		if (*(iterString1 + 8) == 0x00)
+			iterString1 = string1;
+		if (*(iterString2 + 8) == 0x00)
+			iterString2 = string2;
+		for (i = 0; i < 8; i++)
+				writeChar(iterString1[i]);
+		for (i = 0; i < 8; i++)
+				writeChar(iterString2[i]);
+		delayHundred();
+		iterString1++;
+		iterString2++;
+	}
 }
