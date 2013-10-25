@@ -19,7 +19,6 @@ void delayMicro();
 void set_SS_lo();
 void set_SS_hi();
 
-
 char LCDCON = 0x00;
 
 short unsigned int position;
@@ -29,7 +28,6 @@ short unsigned int position;
  */
 void LCDinit()
 {
-	//set_SS_hi();
 	writeCommandNibble(0x03);
 
 	writeCommandNibble(0x03);
@@ -52,7 +50,7 @@ void LCDinit()
 
 	SPI_send(0);
 	delayMicro();
-	position = 0;// Set up the position for the write bytes
+	position = 0; // Set up the position for the write bytes
 }
 /*
  * Author: Todd Branchflower
@@ -142,7 +140,7 @@ void SPI_send(char byteToSend)
 
 void set_SS_lo()
 {
-	P1OUT &=  ~(BIT0 | BIT3);
+	P1OUT &= ~(BIT0 | BIT3);
 }
 
 void set_SS_hi()
@@ -154,9 +152,9 @@ void set_SS_hi()
  */
 void initSPI()
 {
-	UCB0CTL1 |= UCSWRST ; //select a clock to use!
+	UCB0CTL1 |= UCSWRST; //select a clock to use!
 	UCB0CTL0 |= UCCKPL | UCMSB | UCMST | UCSYNC;
-	UCB0CTL1 |=  UCSSEL1;
+	UCB0CTL1 |= UCSSEL1;
 	UCB0STAT |= UCLISTEN;  //enables internal loopback
 	P1SEL |= BIT5;  //make UCB0CLK available on P1.5
 	P1SEL2 |= BIT5;
@@ -184,11 +182,18 @@ void LCDclear()
 	position = 0;
 }
 
-void writeChar(char asciiChar){
-	if(position == 20)
-		cursorToLineTwo();
-	if(position != 40){
+void writeChar(char asciiChar)
+{
+	if (position < 16) {
+		if (position == 8)
+			cursorToLineTwo();
 		writeDataByte(asciiChar);
-		position ++;
+		position++;
 	}
+}
+
+void writeString(char * string){
+	int i;
+	for(i =0; i<strlen(string);i++)
+		writeChar(string[i]);
 }

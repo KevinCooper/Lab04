@@ -8,6 +8,6 @@ int main(void) {
     initSPI();
 	LCDinit();
 	LCDclear();
-	writeChar('A');
+	writeString("Message?12345678");
 	while(1){}
 }
