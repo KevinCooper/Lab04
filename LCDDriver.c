@@ -13,7 +13,7 @@ void writeCommandByte(char commandByte);
 void writeDataByte(char dataByte);
 void writeCommandNibble(char commandNibble);
 void LCD_write_8(char byteToSend);
-void LCD_write_4(char nibbleToSend);
+void LCD_write_4(unsigned char nibbleToSend);
 void delayMilli();
 void delayMicro();
 void set_SS_lo();
@@ -29,7 +29,7 @@ short unsigned int position;
  */
 void LCDinit()
 {
-	set_SS_hi();
+	//set_SS_hi();
 	writeCommandNibble(0x03);
 
 	writeCommandNibble(0x03);
@@ -113,12 +113,12 @@ void LCD_write_4(unsigned char nibbleToSend)
 
 void delayMilli()
 {
-	__delay_cycles(222); //Delay 1.65 ms
+	__delay_cycles(1650); //Delay 1.65 ms
 }
 
 void delayMicro()
 {
-	__delay_cycles(9);  //Delay 40.5 micro seconds
+	__delay_cycles(45);  //Delay 40.5 micro seconds
 }
 /*
  * Author: Todd Branchflower
