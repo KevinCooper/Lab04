@@ -4,16 +4,13 @@
  *  Created on: Oct 23, 2013
  *      Author: C15Kevin.Cooper
  */
-#include <msp430.h>
 
+#include <msp430.h>
+#include "clock.h"
 
 #define RS_MASK 0x40
 #define TRUE 1
 #define FALSE 0
-
-
-
-
 
 void SPI_send(char byteToSend);
 void writeCommandByte(char commandByte);

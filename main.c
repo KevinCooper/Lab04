@@ -1,6 +1,7 @@
 #include <msp430.h> 
 #include "LCDDriver.h"
 #include "buttons/button.h"
+#include "clock.h"
 /*
  * main.c
  */
@@ -12,7 +13,7 @@ int main(void)
 	initSPI();
 	LCDinit();
 	LCDclear();
-
+	setFrequency(SPEED_1MHZ);
 	//Initialize all the strings
 	char * message = "Message?Press123";
 

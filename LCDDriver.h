@@ -10,12 +10,12 @@
 
 #define LCDCON 1
 
-void initSPI();  //Done
-void LCDinit();  //Done
-void LCDclear();  //Done
-void cursorToLineTwo();  //Done
-void cursorToLineOne();  //Done
-void writeChar(char asciiChar); //Done
+void initSPI();
+void LCDinit();
+void LCDclear();
+void cursorToLineTwo();
+void cursorToLineOne();
+void writeChar(char asciiChar);
 void writeString(char * string);
 void scrollString(char * string1, char * string2);
 
