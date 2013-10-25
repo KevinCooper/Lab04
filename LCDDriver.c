@@ -98,6 +98,17 @@ void LCD_write_8(char byteToSend)
 }
 
 void LCD_write_4(char nibbleToSend){
+	nibbleToSend &= 0x0F; //Clear upper half
+	nibbleToSend |= LCDCON; //Set LCD control
+	nibbleToSend &= 0x7f; //Set E low
+	SPI_send(nibbleToSend);
+	delayMicro();
+	nibbleToSend &= 0x80;
+	SPI_send(nibbleToSend);
+	delayMicro();
+	nibbleToSend &= 0x7f;
+	SPI_send(nibbleToSend);
+	delayMicro();
 
 }
 
