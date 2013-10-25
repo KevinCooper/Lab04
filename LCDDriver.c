@@ -20,7 +20,7 @@ void set_SS_lo();
 void set_SS_hi();
 
 
-char LCDCON;
+char LCDCON = 0x00;
 
 short unsigned int position;
 
@@ -102,7 +102,7 @@ void LCD_write_4(unsigned char nibbleToSend)
 	nibbleToSend &= 0x7f; //Set E low
 	SPI_send(nibbleToSend);
 	delayMicro();
-	nibbleToSend &= 0x80;
+	nibbleToSend |= 0x80;
 	SPI_send(nibbleToSend);
 	delayMicro();
 	nibbleToSend &= 0x7f;
@@ -125,7 +125,7 @@ void delayMicro()
  */
 void SPI_send(char byteToSend)
 {
-	char readByte;
+	volatile char readByte;
 
 	set_SS_lo();
 
@@ -142,12 +142,12 @@ void SPI_send(char byteToSend)
 
 void set_SS_lo()
 {
-	P1OUT |= BIT0 | BIT3;
+	P1OUT &=  ~(BIT0 | BIT3);
 }
 
 void set_SS_hi()
 {
-	P1OUT &= ~BIT0 | BIT3;
+	P1OUT |= BIT0 | BIT3;
 }
 /*
  * Author: Kevin Cooper
@@ -171,25 +171,16 @@ void initSPI()
 void cursorToLineTwo()
 {
 	writeCommandByte(0xA8); // Remember to take out magic number
-	//Delay 1
-	LCDCON |= RS_MASK;  // Because Assembly.....
-	//Delay 2
 }
 
 void cursorToLineOne()
 {
 	writeCommandByte(0x80); // Remember to take out magic number
-	//Delay 1
-	LCDCON |= RS_MASK;  // Because Assembly.....
-	//Delay 2
 }
 
 void LCDclear()
 {
 	writeCommandByte(0x01); // Remember to take out magic number
-	//Delay 1
-	LCDCON |= RS_MASK;  // Because Assembly.....
-	//Delay 2
 	position = 0;
 }
 
