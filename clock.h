@@ -12,6 +12,11 @@
 #define SPEED_8MHZ 0x08
 #define SPEED_16MHZ 0x16
 
+/*
+ * Author: Kevin Cooper
+ * Function: Set the clock frequency to the given speed
+ * Inputs: SPEED_1MHZ, SPEED_8MHZ, or SPEED_16MHZ
+ */
 void setFrequency(char speed);
 
 #endif /* CLOCK_H_ */
