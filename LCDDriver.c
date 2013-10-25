@@ -178,3 +178,11 @@ void cursorToLineOne()
 	//Delay 2
 }
 
+void LCDclear()
+{
+	writeCommandByte(0x01); // Remember to take out magic number
+	//Delay 1
+	LCDCON |= RS_MASK;  // Because Assembly.....
+	//Delay 2
+}
+

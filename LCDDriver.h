@@ -12,7 +12,7 @@
 
 void initSPI();  //Done
 void LCDinit();  //Done
-void LCDclear();
+void LCDclear();  //Done
 void cursorToLineTwo();  //Done
 void cursorToLineOne();  //Done
 void writeChar(char asciiChar);
