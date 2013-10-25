@@ -4,5 +4,5 @@ This lab is an implemenation of the specifications laid out at the [lab website]
 <br>
 <br>
 The two libraries written for this lab are the clock.h and LCDDriver.h.  Specific implementation and how to use each of these libraries are included in their specific repositories.<br>
-[LCDDriver](https://github.com/KevinCooper/LCDDriver/)
+[LCDDriver](https://github.com/KevinCooper/LCDDriver/)<br>
 [clock](https://github.com/KevinCooper/clock/)
