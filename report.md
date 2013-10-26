@@ -21,6 +21,7 @@ Software delays in C on the MSP430 should be simple using the code provided by t
 
 Schematic
 
+![Picture of MSP430 Pin Layout](images/schematic.gif)
 ## Implementation
 
 Please check the clock.h and LCDdriver.h for the documentationas to how each method was implemented.  Check either the lab04 repository or the repositories for either of the drivers.
