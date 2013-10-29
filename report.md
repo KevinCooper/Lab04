@@ -5,9 +5,9 @@
 The purpose of this lab is to design a LCD driver.  However, this driver should be a relative port from the assembly code written from Lab03.  Clean, modular, and maintanable C code is a strong emphasis to focus on when designing the API for the LCD driver code.<br>
 
 ## Preliminary Design<br>
-Porting the assembly code over to C should be relatively simple, further explanation on this process to come when I start attempting it.<br>
+Porting the assembly code over to C proved to be relatively simple.  By peforming an almost direct port, the bulk of the interfacing code was written.  From there, similar statements were combined in order to reduce the amount of C code.<br>
 <br>
-Software delays in C on the MSP430 should be simple using the code provided by the instructor.  By using the C macro __delay_cycles(num_of_cycles), I should be able to use the exact number of cycles I calculated in lab03 with no side effects.<br>
+Software delays in C on the MSP430 rely heavily on using the code provided by the instructor.  By using the C macro __delay_cycles(num_of_cycles), I should be able to use the exact number of cycles I calculated in lab03 with no side effects.<br>
 
 ### Software Flow Chart / Algorithms
 
@@ -34,7 +34,7 @@ After the significant bug was found at the beginning of the code, each method wa
 My driver was successfully able to meet all the requirements for basic, B, and A functionality.  For the most part, porting over the assembly code to C was relatively simple.  However, an error on one line of my code caused an hour of bug hunting and frustration.  The LCD driver is initalized by using the LCDinti and initSPI.  After it is set up, there are several manual functions that may be used, but the three functions that should be used are the writeCharacter, writeLine, and scrollLine functions.  The last two utilize the write character to place the strings provided onto the screen of the MSP430.  However, if you were to use the writeLine with mroe than sixteen character, the characters after the sixteenth one would be left off.  This is not true for the scrollLine, which can handle strings as long as the memory of the MSP430 allows.  Other than the those three methods, the other methods are direct ports from assembly to C.
 <br>
 ##Conclusions
-Everything in this project was relatively easy, except for the one bug mentioned in the analysis.  After the screen was able to be blanked by correctly implemented the write4() function, every other method was able to be implemented without much revision needed.  I feel that the writeLine() could be implemented to allow for it to possibly take in two strings instead of one, so more control can be had over what line it is writing to.
+Not much from this lab was exceptionally new, due to my previous experience with C in programming paradigms.  However the one bug mentioned in the analysis really threw me for a loop.  After the screen was able to be blanked by correctly implemented the write4() function, every other method was able to be implemented without much revision needed.  I feel that the writeLine() could be implemented to allow for it to possibly take in two strings instead of one, so more control can be had over what line it is writing to.
 
 ## Documentation<br>
 None
